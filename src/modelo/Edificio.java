@@ -83,4 +83,8 @@ public class Edificio {
     public Espacio obtenerEspacio(int i){
        return listaEspacios.get(i);
     }
+    
+    public void prueba(){
+        
+    }
 }
