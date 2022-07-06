@@ -11,12 +11,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.Autorizador;
 import modelo.Solicitante;
+import modelo.Solicitud_Borrar;
 import modelo.Usuario;
 import vista.VistaLogin;
 import vista.VistaPrincipal;
@@ -62,19 +64,22 @@ public class CtrlVistaLogin implements ActionListener{
     public void iniciar(){//Abre una ventana de acuerdo al tipo de usuario
         VistaPrincipal ventanaUsuario = new VistaPrincipal();
         if(usuario instanceof Administrador){
-            //ventanaUsuario.
+
+            ventanaUsuario.general.remove(ventanaUsuario.administrador);
         }
         if(usuario instanceof Autorizador){
-            ventanaUsuario.administrador.setVisible(false);
+            ventanaUsuario.general.remove(ventanaUsuario.administrador);
+            //ventanaUsuario.administrador.setVisible(false);
         }
         if(usuario instanceof Solicitante){
-            ventanaUsuario.solicitudes.setVisible(false);
-            ventanaUsuario.administrador.setVisible(false);
+            ventanaUsuario.general.remove(ventanaUsuario.administrador);
+            ventanaUsuario.general.remove(ventanaUsuario.solicitudes);
         }
         if(usuario instanceof Usuario){
-            ventanaUsuario.misSolicitudes.setVisible(false);
-            ventanaUsuario.solicitudes.setVisible(false);
-            ventanaUsuario.administrador.setVisible(false);
+            ventanaUsuario.general.remove(ventanaUsuario.administrador);
+            ventanaUsuario.general.remove(ventanaUsuario.solicitudes);
+            ventanaUsuario.general.remove(ventanaUsuario.misSolicitudes);
+            JOptionPane.showMessageDialog(null, "Instanceof", "Error", 2);
         }    
         JOptionPane.showMessageDialog(null, "Se ha iniciado el programa", "Error", 2);
         Ctrl_MisSolicitudes ctrlSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
@@ -96,7 +101,27 @@ public class CtrlVistaLogin implements ActionListener{
             JOptionPane.showMessageDialog(null, "El usuario ingresado no existe", "Error", 2);
         }
     }
-
+    
+        
+    public void cargarDatosArchivos(String nombreArchivo, Object datos){//Carga el conjunto de usuarios 
+        File arch = new File(nombreArchivo);
+        try{
+            FileInputStream fis = new FileInputStream(arch);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            datos = ois.readObject();
+            ois.close();
+        }
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo: " + nombreArchivo, "Error", 2);
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo: "+ nombreArchivo, "Error", 2);
+        }
+        catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Los archivos no son compatibles", "Error", 2);
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==ventanaLogin.ingresarJbtn) ingresar();

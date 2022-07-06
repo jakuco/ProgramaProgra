@@ -83,7 +83,7 @@ public class Ctrl_MisSolicitudes implements ActionListener{
         }   
         */
     }
-    
+
     public void cargarSolicitudes(){//Carga el conjunto de usuarios 
         File archUsuarios = new File("solicitudes");
         try{
