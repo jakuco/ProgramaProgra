@@ -75,7 +75,10 @@ public class CtrlVistaLogin implements ActionListener{
             ventanaUsuario.misSolicitudes.setVisible(false);
             ventanaUsuario.solicitudes.setVisible(false);
             ventanaUsuario.administrador.setVisible(false);
-        }
+        }    
+        JOptionPane.showMessageDialog(null, "Se ha iniciado el programa", "Error", 2);
+        Ctrl_MisSolicitudes ctrlSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
+        JOptionPane.showMessageDialog(null, "Se ha salido del constructor de mis solicitudes", "Error", 2);
         ventanaUsuario.setVisible(true);
     }
     

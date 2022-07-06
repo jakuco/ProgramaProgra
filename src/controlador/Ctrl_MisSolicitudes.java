@@ -28,20 +28,24 @@ public class Ctrl_MisSolicitudes implements ActionListener{
     private VistaPrincipal vista;
     private DefaultTableModel modeloTabla;
     private ArrayList<Solicitud_Borrar> solicitudes;
-    public Ctrl_MisSolicitudes() {
-        vista = new VistaPrincipal();
-        vista.cancelarSolicitud_jButton.addActionListener(this);
-        vista.SolicitudesUsuario_jTable.setModel(modeloTabla);
-        elementosEnTabla(/*Usuario*/);
+    public Ctrl_MisSolicitudes(VistaPrincipal vista) {
+        this.vista = vista;
+        JOptionPane.showMessageDialog(null, "Constructor mis solicitudes", "Error", 2);
+        this.vista.cancelarSolicitud_jButton.addActionListener(this);
+       // vista.
+        //this.vista.SolicitudesUsuario_jTable.setModel(modeloTabla);
+        //elementosEnTabla(/*Usuario*/);
         
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==vista.cancelarSolicitud_jButton){
-            int filas=vista.SolicitudesUsuario_jTable.getSelectedRow();
+            int fila=vista.SolicitudesUsuario_jTable.getSelectedRow();
             EliminarSolicitud(/*se pasan los parámetros para eliminar la solicitud del sistema*/);
             //Usuario.listaSolicitudes(filas); // se elimina la solicitud de las lista del Usuario
             elementosEnTabla(/*Usuario*/);
+            //System.out.println("Se realiza una acción");
+            JOptionPane.showMessageDialog(null, "Fila escogida: " + fila, "Error", 2);
         }
         if (e.getSource()== vista.jButton_Solicitar){
             int filas= vista.jTable_HorarioSolicitar.getSelectedRow();
@@ -62,8 +66,8 @@ public class Ctrl_MisSolicitudes implements ActionListener{
     
     public void elementosEnTabla(/*Usuario*/){ // aquí pasa toda la acción de la ventana
         //vista.mostrarLanzadas.setText(valueOf(modelo.getLanzadas()));// se muestra las veces que se ha lanzado
-        
-        for (int i=0; i</*Usuario.cantidadSolicitudes*/ 3;i++)
+     /*   
+     /*   for (int i=0; i<Usuario.cantidadSolicitudes;i++)
         modeloTabla.insertRow(modeloTabla.getRowCount(), new Object []{});
         
         for (int i=0; i<modeloTabla.getRowCount();i++){
@@ -75,11 +79,12 @@ public class Ctrl_MisSolicitudes implements ActionListener{
         
         modeloTabla.setValueAt(modelo.Espacios.getEdad(), i,2);
         
-        modeloTabla.setValueAt(modelo.Tiempo.cantEmpleados(),i, 3);*/
-        }    
+        modeloTabla.setValueAt(modelo.Tiempo.cantEmpleados(),i, 3);
+        }   
+        */
     }
     
-    public void cargarUsuarios(){//Carga el conjunto de usuarios 
+    public void cargarSolicitudes(){//Carga el conjunto de usuarios 
         File archUsuarios = new File("solicitudes");
         try{
             FileInputStream fis = new FileInputStream(archUsuarios);
