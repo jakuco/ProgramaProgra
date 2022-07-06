@@ -62,10 +62,10 @@ public class CtrlVistaLogin implements ActionListener{
     public void iniciar(){//Abre una ventana de acuerdo al tipo de usuario
         VistaPrincipal ventanaUsuario = new VistaPrincipal();
         if(usuario instanceof Administrador){
-            
+            //ventanaUsuario.
         }
         if(usuario instanceof Autorizador){
-            ventanaUsuario.administrador.setEnabled(false);
+            ventanaUsuario.administrador.setVisible(false);
         }
         if(usuario instanceof Solicitante){
             ventanaUsuario.solicitudes.setVisible(false);
