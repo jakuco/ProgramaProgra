@@ -17,7 +17,6 @@ public class Edificio {
     private int numPlantas;
     private int numEspacios;
     private ArrayList <Espacio> listaEspacios;// se pueden guardar estos en un hash map para que no se repitan
-    
 
     public Edificio(String codigo, String nombre, String ubicacion, int numPlantas, int mumEspacios) {
         this.codigo = codigo;
@@ -83,8 +82,5 @@ public class Edificio {
     public Espacio obtenerEspacio(int i){
        return listaEspacios.get(i);
     }
-    
-    public void prueba(){
-        
-    }
+ 
 }
