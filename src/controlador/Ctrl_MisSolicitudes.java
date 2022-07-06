@@ -4,7 +4,7 @@
  */
 package controlador;
 
-import vistasproyfinal.VistaPricipal;
+import vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -15,10 +15,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ctrl_MisSolicitudes implements ActionListener{
     
-    private VistaPricipal vista;
+    private VistaPrincipal vista;
     private DefaultTableModel modeloTabla;
     public Ctrl_MisSolicitudes() {
-        vista = new VistaPricipal();
+        vista = new VistaPrincipal();
         vista.cancelarSolicitud_jButton.addActionListener(this);
         vista.SolicitudesUsuario_jTable.setModel(modeloTabla);
         elementosEnTabla(/*Usuario*/);
