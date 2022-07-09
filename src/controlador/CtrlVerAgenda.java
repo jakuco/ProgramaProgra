@@ -11,12 +11,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import modelo.Edificio;
-import modelo.Espacio;
 import vista.VistaPrincipal;
 
 /**

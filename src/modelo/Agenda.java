@@ -6,10 +6,11 @@ package modelo;
 
 /**
  *
- * @author Jorge
+ * @author davqi
  */
 public class Agenda {
     private String fecha;
     private LineaAgenda[] agenda;
+
     
 }

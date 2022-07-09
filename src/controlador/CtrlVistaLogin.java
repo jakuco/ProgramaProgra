@@ -11,14 +11,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.Autorizador;
 import modelo.Solicitante;
-import modelo.Solicitud_Borrar;
 import modelo.Usuario;
 import vista.VistaLogin;
 import vista.VistaPrincipal;
@@ -64,9 +62,7 @@ public class CtrlVistaLogin implements ActionListener{
     public void iniciar(){//Abre una ventana de acuerdo al tipo de usuario
         VistaPrincipal ventanaUsuario = new VistaPrincipal();
         if(usuario instanceof Administrador){
-            ventanaUsuario.setVisible(true);
-            Ctrl_MisSolicitudes ctrlSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
-            Ctrl_Aceptar_Rechazar_Solicitudes ctrl_Aceptar_Rechazar_Solicitudes= new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario);
+            CtrlGestionarEdificios ctlGestEdif = new CtrlGestionarEdificios(ventanaUsuario);
             return;
         }
         if(usuario instanceof Autorizador){
@@ -85,6 +81,7 @@ public class CtrlVistaLogin implements ActionListener{
             ventanaUsuario.general.remove(ventanaUsuario.administrador);
             ventanaUsuario.general.remove(ventanaUsuario.solicitudes);
             ventanaUsuario.general.remove(ventanaUsuario.misSolicitudes);
+            
             ventanaUsuario.setVisible(true);
             return;
         }    

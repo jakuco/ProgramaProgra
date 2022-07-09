@@ -50,38 +50,38 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_HorarioSolicitar = new javax.swing.JTable();
         jButton_Solicitar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         solicitudes = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox_Ordenar_por = new javax.swing.JComboBox<>();
-        jButton_Rechazar_Solicitud = new javax.swing.JButton();
-        jButton_Aceptar_Solicitud = new javax.swing.JButton();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable_Aceptar_Rechazar_Solicitudes = new javax.swing.JTable();
-        jComboBox_Edificios = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox_Espacio_Fisico = new javax.swing.JComboBox<>();
-        jButton_Mostrar_Solicitudes = new javax.swing.JButton();
+        jTable2 = new javax.swing.JTable();
         administrador = new javax.swing.JTabbedPane();
         jPanel1_adminitrador = new javax.swing.JPanel();
         edificios1 = new javax.swing.JComboBox<>();
         salas = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        nombreTxt = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        idTxt = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        ubicacionTxt = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descripcionTxt = new javax.swing.JTextArea();
         BtnGuardar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        numPisos = new javax.swing.JTextField();
         BtnAgregar = new javax.swing.JButton();
         BtnEliminar = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        elementos = new javax.swing.JComboBox<>();
+        tipoTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        capacidadTxt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2_administrador = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
@@ -171,7 +171,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(verAgendaJPLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(verAgendaJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addGroup(verAgendaJPLayout.createSequentialGroup()
                         .addComponent(edificios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
@@ -229,7 +229,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelarSolicitud_jButton)
                         .addGap(23, 23, 23)))
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,6 +293,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jButton_Solicitar.setText("SOLICITAR");
 
+        jButton3.setText("CANCELAR");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -309,15 +311,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65)
-                                .addComponent(jButton_Solicitar))
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jButton_Solicitar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3))))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 160, Short.MAX_VALUE))
+                .addGap(0, 64, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,13 +331,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Solicitar))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(44, 44, 44)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton3)
+                        .addComponent(jButton_Solicitar)))
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(133, Short.MAX_VALUE))
         );
@@ -344,13 +351,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel5.setText("Ordenar por:");
 
-        jComboBox_Ordenar_por.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prioridad", "Orden", "ID", "Correo" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prioridad", "Orden", "ID", "Correo" }));
 
-        jButton_Rechazar_Solicitud.setText("Rechazar solicitud");
+        jButton9.setText("Rechazar solicitud");
 
-        jButton_Aceptar_Solicitud.setText("Aceptar solicitud");
+        jButton10.setText("Aceptar solicitud");
 
-        jTable_Aceptar_Rechazar_Solicitudes.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -361,17 +368,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 "ID", "Edificio", "Cargo solicitante", "Correo del solicitante", "Fecha", "Hora"
             }
         ));
-        jScrollPane5.setViewportView(jTable_Aceptar_Rechazar_Solicitudes);
-
-        jComboBox_Edificios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", " " }));
-
-        jLabel9.setText("Edificio:");
-
-        jLabel10.setText("Espacio fisico:");
-
-        jComboBox_Espacio_Fisico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sala de computacion A132", "Aula ", "Auditorio", " ", " ", " " }));
-
-        jButton_Mostrar_Solicitudes.setText("Actualizar Solicitudes");
+        jScrollPane5.setViewportView(jTable2);
 
         javax.swing.GroupLayout solicitudesLayout = new javax.swing.GroupLayout(solicitudes);
         solicitudes.setLayout(solicitudesLayout);
@@ -380,65 +377,38 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(solicitudesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(solicitudesLayout.createSequentialGroup()
-                        .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jComboBox_Ordenar_por, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox_Edificios, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox_Espacio_Fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(jButton_Mostrar_Solicitudes)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton_Rechazar_Solicitud)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Aceptar_Solicitud)))
-                .addContainerGap())
+                        .addComponent(jButton9)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitudesLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         solicitudesLayout.setVerticalGroup(
             solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solicitudesLayout.createSequentialGroup()
-                .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(solicitudesLayout.createSequentialGroup()
-                        .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(solicitudesLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_Ordenar_por, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitudesLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitudesLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox_Edificios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitudesLayout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox_Espacio_Fisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitudesLayout.createSequentialGroup()
-                        .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Rechazar_Solicitud)
-                            .addComponent(jButton_Aceptar_Solicitud)
-                            .addComponent(jButton_Mostrar_Solicitudes))
-                        .addGap(18, 18, 18)))
+                .addGap(16, 16, 16)
+                .addGroup(solicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         general.addTab("Aceptar/ Rechazar Solicitudes", solicitudes);
 
-        edificios1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Edificio" }));
+        edificios1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo Edificio" }));
 
-        salas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sala" }));
+        salas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nueva Sala" }));
 
         jLabel17.setText("Nombre:");
 
@@ -448,9 +418,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel20.setText("Descripción:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        descripcionTxt.setColumns(20);
+        descripcionTxt.setRows(5);
+        jScrollPane3.setViewportView(descripcionTxt);
 
         BtnGuardar.setText("Guardar Cambios");
 
@@ -462,7 +432,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         BtnEditar.setText("Editar");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elemento" }));
+        elementos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elemento" }));
+
+        jLabel3.setText("Tipo:");
+
+        jLabel9.setText("Capacidad:");
 
         javax.swing.GroupLayout jPanel1_adminitradorLayout = new javax.swing.GroupLayout(jPanel1_adminitrador);
         jPanel1_adminitrador.setLayout(jPanel1_adminitradorLayout);
@@ -490,21 +464,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                         .addComponent(jLabel19)
                                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(32, 32, 32)
-                                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
                                         .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField8)
-                                            .addComponent(jTextField7)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(idTxt)
+                                            .addComponent(ubicacionTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                            .addComponent(nombreTxt))
                                         .addGap(84, 84, 84)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(tipoTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(numPisos)
+                                            .addComponent(capacidadTxt))
+                                        .addGap(84, 84, 84))
                                     .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
-                                        .addComponent(salas, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
+                                        .addComponent(salas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
                                         .addComponent(BtnAgregar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(BtnEliminar)
@@ -523,21 +504,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(BtnEliminar)
                     .addComponent(edificios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numPisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ubicacionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(capacidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(35, 35, 35)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -657,7 +642,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jCheckBox2))
-                                .addGap(0, 176, Short.MAX_VALUE)))))
+                                .addGap(0, 79, Short.MAX_VALUE)))))
                 .addGap(202, 202, 202))
         );
         jPanel2_administradorLayout.setVerticalGroup(
@@ -773,7 +758,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         editarUusuarioLayout.setVerticalGroup(
             editarUusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,7 +804,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(general, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
+                .addComponent(general)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -911,30 +896,30 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JTable SolicitudesUsuario_jTable;
     public javax.swing.JTabbedPane administrador;
     public javax.swing.JButton cancelarSolicitud_jButton;
+    public javax.swing.JTextField capacidadTxt;
+    public javax.swing.JTextArea descripcionTxt;
     public javax.swing.JComboBox<String> edificios;
     public javax.swing.JComboBox<String> edificios1;
     public javax.swing.JPanel editarUusuario;
+    public javax.swing.JComboBox<String> elementos;
     public javax.swing.JComboBox<String> espacios;
     public javax.swing.JTabbedPane general;
     public javax.swing.JTable horario;
+    public javax.swing.JTextField idTxt;
+    private javax.swing.JButton jButton10;
+    public javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    public javax.swing.JButton jButton_Aceptar_Solicitud;
-    public javax.swing.JButton jButton_Mostrar_Solicitudes;
-    public javax.swing.JButton jButton_Rechazar_Solicitud;
+    private javax.swing.JButton jButton9;
     public javax.swing.JButton jButton_Solicitar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     public javax.swing.JComboBox<String> jComboBox1;
     public javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox_Edificios;
-    private javax.swing.JComboBox<String> jComboBox_Espacio_Fisico;
-    public javax.swing.JComboBox<String> jComboBox_Ordenar_por;
+    private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -954,6 +939,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -969,10 +955,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    public javax.swing.JTable jTable_Aceptar_Rechazar_Solicitudes;
+    private javax.swing.JTable jTable2;
     public javax.swing.JTable jTable_HorarioSolicitar;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
@@ -984,15 +968,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     public javax.swing.JTabbedPane misSolicitudes;
+    public javax.swing.JTextField nombreTxt;
+    public javax.swing.JTextField numPisos;
     public javax.swing.JComboBox<String> salas;
     public javax.swing.JPanel solicitudes;
+    public javax.swing.JTextField tipoTxt;
+    public javax.swing.JTextField ubicacionTxt;
     public javax.swing.JButton verAgendaBtn;
     public javax.swing.JPanel verAgendaJP;
     // End of variables declaration//GEN-END:variables

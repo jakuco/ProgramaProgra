@@ -4,27 +4,25 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Jorge
  */
-public class Espacio {
+public class Espacio implements Serializable{
     private String codigo;
     private String descripcion;
     private String ubicacion;
     private int tipo;
     private int capacidad;
     private ArrayList <Elemento> listaElementos; 
+    private Map<String,Agenda> agendas;
     private Queue<Solicitud_Borrar> colaSolicitudes;
 
-    public Espacio(String codigo, String descripcion, String ubicacion, int tipo, int capacidad) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.ubicacion = ubicacion;
-        this.tipo = tipo;
-        this.capacidad = capacidad;
+    public Espacio() {
+        agendas = new HashMap<String,Agenda>();
     }
 
     public String getCodigo() {

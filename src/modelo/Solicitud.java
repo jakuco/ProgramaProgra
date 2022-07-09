@@ -8,10 +8,8 @@ package modelo;
  *
  * @author davqi
  */
-public class LineaAgenda {
-    private String horaInicial;
-    private String horaFinal;
-    private String actividad;
-    private String responsable;
-    
+public class Solicitud {
+    private String codigo;
+    private String estado;
+    private LineaAgenda[] lineas;
 }

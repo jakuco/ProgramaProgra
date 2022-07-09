@@ -4,13 +4,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import modelo.*;
 /**
  *
  * @author Jorge
  */
-public class Edificio {
+public class Edificio implements Serializable{
     private String codigo;
     private String nombre;
     private String ubicacion;
@@ -18,12 +19,7 @@ public class Edificio {
     private int numEspacios;
     private ArrayList <Espacio> listaEspacios;// se pueden guardar estos en un hash map para que no se repitan
 
-    public Edificio(String codigo, String nombre, String ubicacion, int numPlantas, int mumEspacios) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.ubicacion = ubicacion;
-        this.numPlantas = numPlantas;
-        this.numEspacios = numEspacios;
+    public Edificio() {
         listaEspacios= new ArrayList<Espacio>();
     }
 
@@ -35,13 +31,15 @@ public class Edificio {
         this.codigo = codigo;
     }
 
-    public int getMumEspacios() {
+    public int getNumEspacios() {
         return numEspacios;
     }
 
-    public void setMumEspacios(int mumEspacios) {
-        this.numEspacios = mumEspacios;
+    public void setNumEspacios(int numEspacios) {
+        this.numEspacios = numEspacios;
     }
+
+
 
     public String getNombre() {
         return nombre;
@@ -51,13 +49,6 @@ public class Edificio {
         this.nombre = nombre;
     }
 
-    public int getNumEspacios() {
-        return numEspacios;
-    }
-
-    public void setNumEspacios(int numEspacios) {
-        this.numEspacios = numEspacios;
-    }
 
     public int getNumPlantas() {
         return numPlantas;
@@ -79,8 +70,15 @@ public class Edificio {
         listaEspacios.add(e);
     }
     
+    public void removeEspacio(int i){
+        listaEspacios.remove(i);
+    }
     public Espacio obtenerEspacio(int i){
        return listaEspacios.get(i);
+    }
+    
+    public ArrayList<Espacio> getListaEspacios(){
+        return listaEspacios;
     }
     
 }
