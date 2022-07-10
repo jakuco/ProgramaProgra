@@ -15,7 +15,7 @@ public class Usuario implements Serializable{
        
    }
 
-    public Usuario(String cedula, String contrasenia, String nombre, String apellido, String telefono, String correo, String dependencia) {
+    public Usuario(String correo, String cedula, String nombre, String apellido, String telefono,String contrasenia, String dependencia) {
         this.cedula = cedula;
         this.contrasenia = contrasenia;
         this.nombre = nombre;

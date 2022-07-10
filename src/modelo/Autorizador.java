@@ -9,7 +9,7 @@ package modelo;
  * @author karl
  */
 public class Autorizador extends Solicitante{
-    public Autorizador(){
-        
-    }
+   public Autorizador(){
+       
+   }
 }
