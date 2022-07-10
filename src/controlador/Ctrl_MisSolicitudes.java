@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
@@ -28,14 +29,20 @@ public class Ctrl_MisSolicitudes implements ActionListener{
     private VistaPrincipal vista;
     private DefaultTableModel modeloTabla;
     private ArrayList<Solicitud_Borrar> solicitudes;
+    private DefaultTableModel modeloTab;
     public Ctrl_MisSolicitudes(VistaPrincipal vista) {
         this.vista = vista;
         JOptionPane.showMessageDialog(null, "Constructor mis solicitudes", "Error", 2);
         this.vista.cancelarSolicitud_jButton.addActionListener(this);
+        this.vista.jButton_Solicitar.addActionListener(this);
        // vista.
         //this.vista.SolicitudesUsuario_jTable.setModel(modeloTabla);
         //elementosEnTabla(/*Usuario*/);
-        
+        iniciarTabla_Mis_Solicitudes();
+        mostrarSolicitudes();
+        iniciarTabla_SolicitarEnAgenda();
+
+        mostrarSolicitudesAgenda();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -45,14 +52,37 @@ public class Ctrl_MisSolicitudes implements ActionListener{
             //Usuario.listaSolicitudes(filas); // se elimina la solicitud de las lista del Usuario
             elementosEnTabla(/*Usuario*/);
             //System.out.println("Se realiza una acción");
-            JOptionPane.showMessageDialog(null, "Fila escogida: " + fila, "Error", 2);
+            JOptionPane.showMessageDialog(null, "Solicitud eliminada: " + (fila+1), "Error", 2);
+
+            modeloTab.removeRow(fila);
+
         }
         if (e.getSource()== vista.jButton_Solicitar){
-            int filas= vista.jTable_HorarioSolicitar.getSelectedRow();
+            int fila= vista.jTable_HorarioSolicitar.getSelectedRow();
             //guardarSolicitud(obtenerSolicitud(filas));
             //se obtiene la solicitud de la tabla
+            //vista.jTable_HorarioSolicitar.setBackground(Color.red);
+            //vista.jTable_HorarioSolicitar.getCellEditor(fila, fila).
+            modeloTabla.removeRow(fila);
         }
     }
+    
+    public void iniciarTabla_SolicitarEnAgenda(){
+        vista.jTable_HorarioSolicitar.removeAll();
+        String data[][]={};
+        String col[]={"Hora","Lunes","Martes","Miércoles","Jueves","Viernes","Estado"}; // se pide el nombre del jugador una sola vez al inicio
+        modeloTabla = new DefaultTableModel(data, col);
+        vista.jTable_HorarioSolicitar.setModel(modeloTabla);
+    }
+    
+    public void iniciarTabla_Mis_Solicitudes(){
+        vista.SolicitudesUsuario_jTable.removeAll();
+        String data[][]={};
+        String col[]={"Parte 1","Parte 2"}; // se pide el nombre del jugador una sola vez al inicio
+        modeloTab = new DefaultTableModel(data, col);
+        vista.SolicitudesUsuario_jTable.setModel(modeloTab);
+    }
+    
     public void obtenerSolicitud(){
         
     }
@@ -83,7 +113,39 @@ public class Ctrl_MisSolicitudes implements ActionListener{
         }   
         */
     }
-
+    
+     public void mostrarSolicitudesAgenda(){
+            for (int i=0; i<3; i++){
+                modeloTabla.insertRow(i, new Object []{});
+        
+                modeloTabla.setValueAt("1: "+ i, i, 0); 
+   
+                modeloTabla.setValueAt("2: "+ i, i, 1); 
+                
+                modeloTabla.setValueAt("3: "+i, i, 2);
+               
+                modeloTabla.setValueAt("4: "+i, i, 3);
+                
+                modeloTabla.setValueAt("5: "+i, i, 4);
+                
+                modeloTabla.setValueAt("6: "+i, i, 4);
+                
+                modeloTabla.setValueAt("7: "+i, i, 4);
+            }
+        
+    }
+    
+    
+    public void mostrarSolicitudes(){
+            for (int i=0; i<3; i++){
+                modeloTab.insertRow(i, new Object []{});
+               
+                modeloTab.setValueAt("XD: "+ i, i, 0); 
+   
+                modeloTab.setValueAt("Sol: "+ i, i, 1); 
+            }
+        
+    }
     public void cargarSolicitudes(){//Carga el conjunto de usuarios 
         File archUsuarios = new File("solicitudes");
         try{

@@ -28,7 +28,7 @@ public class CtrlVerAgenda implements ActionListener{
     public CtrlVerAgenda(VistaPrincipal ventanaUsuario) {
         this.ventanaUsuario = ventanaUsuario;
         edificios = new HashMap<String,Edificio>();
-        cargarEdificios();
+        //cargarEdificios();
         cargarComboEdificios();
         this.ventanaUsuario.verAgendaBtn.addActionListener(this);
         this.ventanaUsuario.edificios.addActionListener(this);
