@@ -36,7 +36,6 @@ public class CtrlVistaLogin implements ActionListener{
         //usuario = new Usuario();
         usuarios = new HashMap<String,Usuario>();
         cargarUsuarios();
-        System.out.println("El pepe");
         ventanaLogin.ingresarJbtn.addActionListener(this);
         ventanaLogin.setVisible(true);
     }
@@ -61,33 +60,36 @@ public class CtrlVistaLogin implements ActionListener{
     }
     
     public void iniciar(){//Abre una ventana de acuerdo al tipo de usuario
-        System.out.println("eNTRA A INICIAR");
         VistaPrincipal ventanaUsuario = new VistaPrincipal();
         if(usuario instanceof Administrador){
             CtrlGestionarEdificios ctlGestEdif = new CtrlGestionarEdificios(ventanaUsuario);
-            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
+            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario, (Solicitante) usuario,usuarios);//modificacion
             Ctrl_Aceptar_Rechazar_Solicitudes ctrl_Aceptar_Rechazar_Solicitudes =
-                new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario);
+                new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario,usuarios);
             Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);
             CtrlVerAgenda ctrlVerAgenda = new CtrlVerAgenda(ventanaUsuario);
+            CtrlEditarMiUsuario ctrl_editar=new CtrlEditarMiUsuario(usuario,ventanaUsuario,"ADMINISTRADOR",ctrl_registrar);
             ventanaUsuario.setVisible(true);
             return;
         }
         if(usuario instanceof Autorizador){
             ventanaUsuario.general.remove(ventanaUsuario.administrador);
-            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
+            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario, (Solicitante) usuario,usuarios);
             Ctrl_Aceptar_Rechazar_Solicitudes ctrl_Aceptar_Rechazar_Solicitudes =
-                new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario);
+                new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario,usuarios);
             Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);
             CtrlVerAgenda ctrlVerAgenda = new CtrlVerAgenda(ventanaUsuario);
+            CtrlEditarMiUsuario ctrl_editar=new CtrlEditarMiUsuario(usuario,ventanaUsuario,"AUTORIZADOR",ctrl_registrar);
             ventanaUsuario.setVisible(true);
             return;
         }
         if(usuario instanceof Solicitante){
             ventanaUsuario.general.remove(ventanaUsuario.administrador);
             ventanaUsuario.general.remove(ventanaUsuario.solicitudes);
-            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
+            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario, (Solicitante) usuario,usuarios);
             CtrlVerAgenda ctrlVerAgenda = new CtrlVerAgenda(ventanaUsuario);
+            Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);
+            CtrlEditarMiUsuario ctrl_editar=new CtrlEditarMiUsuario(usuario,ventanaUsuario,"SOLICITANTE",ctrl_registrar);
             ventanaUsuario.setVisible(true);
             return;
         }
@@ -96,17 +98,12 @@ public class CtrlVistaLogin implements ActionListener{
             ventanaUsuario.general.remove(ventanaUsuario.solicitudes);
             ventanaUsuario.general.remove(ventanaUsuario.misSolicitudes);
             CtrlVerAgenda ctrlVerAgenda = new CtrlVerAgenda(ventanaUsuario);
+            Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);
+            CtrlEditarMiUsuario ctrl_editar=new CtrlEditarMiUsuario(usuario,ventanaUsuario,"USUARIO",ctrl_registrar);
             ventanaUsuario.setVisible(true);
             return;
         }
-        /*
-         CtrlGestionarEdificios ctlGestEdif = new CtrlGestionarEdificios(ventanaUsuario);
-            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario);
-            Ctrl_Aceptar_Rechazar_Solicitudes ctrl_Aceptar_Rechazar_Solicitudes =
-                new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario);
-            Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);
-            CtrlVerAgenda ctrlVerAgenda = new CtrlVerAgenda(ventanaUsuario);
-        */
+
     }
     
     public void ingresar(){//Revisa si el usuario existe y obtiene sus datos

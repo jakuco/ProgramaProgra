@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -68,6 +66,7 @@ public class CtrlGestionarEdificios implements ActionListener, ItemListener{
                 vista.numPisos.setEditable(false);
                 vista.tipoTxt.setEditable(true);
                 vista.capacidadTxt.setEditable(true);
+                vista.descripcionTxt.setEditable(true);
             }
             else{//Si está seleccionada una sala
                 vista.BtnEliminar.setEnabled(true);
@@ -119,12 +118,12 @@ public class CtrlGestionarEdificios implements ActionListener, ItemListener{
     
     public void cargarSalasCB(){
         int count = 1;
-        while(!(vista.edificios1.getItemCount()==1)){
+        while(!(vista.salas.getItemCount()==1)){
             vista.salas.removeItemAt(count);
         }
         if(!(edificios.get(vista.edificios1.getSelectedIndex()-1).getListaEspacios().isEmpty())){
             for(Espacio e: edificios.get(vista.edificios1.getSelectedIndex()-1).getListaEspacios()){
-                vista.salas.addItem(e.getCodigo());
+                vista.salas.addItem(e.getNombre());
             }
         }
         else return;
@@ -157,6 +156,7 @@ public class CtrlGestionarEdificios implements ActionListener, ItemListener{
     
     public void agregarSala(){
         Espacio nuevo = new Espacio();
+        nuevo.setNombre(vista.nombreTxt.getText());
         nuevo.setCapacidad(Integer.parseInt(vista.capacidadTxt.getText()));
         nuevo.setCodigo(vista.idTxt.getText());
         nuevo.setDescripcion(vista.descripcionTxt.getText());
@@ -179,6 +179,8 @@ public class CtrlGestionarEdificios implements ActionListener, ItemListener{
         else{//Elimina una sala de un edificio
              edificios.get(vista.edificios1.getSelectedIndex()-1).removeEspacio(vista.salas.getSelectedIndex()-1);
              vista.salas.remove(vista.salas.getSelectedIndex());
+             controlarComponentes();
+             cargarSalasCB();
              JOptionPane.showMessageDialog(null, "Sala eliminada", "Exito", 1);
         }
         cambios = true;

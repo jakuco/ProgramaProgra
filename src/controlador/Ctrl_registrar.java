@@ -278,6 +278,10 @@ public class Ctrl_registrar implements ActionListener,KeyListener,Serializable{
        view.txttelefono.setText("");
        view.txtdependencia.setText("");
    }
+    public void ActualizarParametros(Usuario usuario,String key){
+        usuarios.replace(key, usuario);
+        ActualizarArchivo();
+    }
     public boolean ValidarCorreo(){//validar extencion    
   Pattern pattern = Pattern.compile("(\\W|^)[\\w.\\-]{0,25}@(ucuenca.edu)\\.ec(\\W|$)");
         Matcher matcher = pattern.matcher(view.txtcorreo.getText());
@@ -360,7 +364,6 @@ public class Ctrl_registrar implements ActionListener,KeyListener,Serializable{
         if(tecla==10 && e.getSource()==view.txtcorreo && view.btnNuevo.isEnabled()){//si oprimo enter
             view.txtprioridad.setText("");//para borrar al inicio
             if(usuarios.containsKey(view.txtcorreo.getText())){
-                  JOptionPane.showMessageDialog(null, "El usuario ingresado existe", "Error", 2);
                   view.btnEditar.setEnabled(true);
                   view.btnEliminar.setEnabled(true);
                  // view.boxPrioridad.setEditable(false);

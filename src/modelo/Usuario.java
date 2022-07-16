@@ -2,6 +2,8 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Usuario implements Serializable{
    private String cedula;
@@ -11,6 +13,8 @@ public class Usuario implements Serializable{
    private String telefono;
    private String correo;
    private String dependencia; 
+ 
+   
    public Usuario(){
        
    }
@@ -23,6 +27,7 @@ public class Usuario implements Serializable{
         this.telefono = telefono;
         this.correo = correo;
         this.dependencia = dependencia;
+        
     }
 
     public String getCedula() {

@@ -4,164 +4,220 @@
  */
 package controlador;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Edificio;
+import modelo.Espacio;
+import modelo.LineaAgenda;
+import modelo.Solicitante;
+import modelo.Solicitud;
 import modelo.Usuario;
-import modelo.Solicitud_Borrar;
 
 /**
  *
  * @author Jorge
  */
-public class Ctrl_MisSolicitudes implements ActionListener{
+public class Ctrl_MisSolicitudes implements ActionListener,ItemListener{
     
     private VistaPrincipal vista;
-    private DefaultTableModel modeloTabla;
-    private ArrayList<Solicitud_Borrar> solicitudes;
-    private DefaultTableModel modeloTab;
-    public Ctrl_MisSolicitudes(VistaPrincipal vista) {
+    private ArrayList<Edificio> edificios;
+    private Map<String,Usuario> usuarios;//Lista de usuarios, la clave es el correo
+    Solicitante solicitante;
+    Solicitud solicitud;
+    Solicitante usuario;
+    LineaAgenda linea;
+    
+    public Ctrl_MisSolicitudes(VistaPrincipal vista,Solicitante usuario, Map<String,Usuario> usuarios) {
         this.vista = vista;
-        JOptionPane.showMessageDialog(null, "Constructor mis solicitudes", "Error", 2);
-        this.vista.cancelarSolicitud_jButton.addActionListener(this);
-        this.vista.jButton_Solicitar.addActionListener(this);
-       // vista.
-        //this.vista.SolicitudesUsuario_jTable.setModel(modeloTabla);
-        //elementosEnTabla(/*Usuario*/);
-        iniciarTabla_Mis_Solicitudes();
-        mostrarSolicitudes();
-        iniciarTabla_SolicitarEnAgenda();
-
-        mostrarSolicitudesAgenda();
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==vista.cancelarSolicitud_jButton){
-            int fila=vista.SolicitudesUsuario_jTable.getSelectedRow();
-            EliminarSolicitud(/*se pasan los parámetros para eliminar la solicitud del sistema*/);
-            //Usuario.listaSolicitudes(filas); // se elimina la solicitud de las lista del Usuario
-            elementosEnTabla(/*Usuario*/);
-            //System.out.println("Se realiza una acción");
-            JOptionPane.showMessageDialog(null, "Solicitud eliminada: " + (fila+1), "Error", 2);
-
-            modeloTab.removeRow(fila);
-
-        }
-        if (e.getSource()== vista.jButton_Solicitar){
-            int fila= vista.jTable_HorarioSolicitar.getSelectedRow();
-            //guardarSolicitud(obtenerSolicitud(filas));
-            //se obtiene la solicitud de la tabla
-            //vista.jTable_HorarioSolicitar.setBackground(Color.red);
-            //vista.jTable_HorarioSolicitar.getCellEditor(fila, fila).
-            modeloTabla.removeRow(fila);
-        }
+        this.usuario=usuario;
+        this.usuarios = usuarios;
+        this.vista.cancelarSolicitudBtn.addActionListener(this);
+        this.vista.solicitarBtn.addActionListener(this);
+        this.vista.boxEdificio.addItemListener(this);
+        this.vista.boxSala.addItemListener(this);
+        solicitante =new Solicitante();
+        linea=new  LineaAgenda();
+        solicitud=new Solicitud();
+        cargarEdificios();
+        cargarEdificiosCB();
+        cargarEspaciosCB();
+        cargarMisSolicitudes();
+        cargarDescripcion();
     }
     
-    public void iniciarTabla_SolicitarEnAgenda(){
-        vista.jTable_HorarioSolicitar.removeAll();
-        String data[][]={};
-        String col[]={"Hora","Lunes","Martes","Miércoles","Jueves","Viernes","Estado"}; // se pide el nombre del jugador una sola vez al inicio
-        modeloTabla = new DefaultTableModel(data, col);
-        vista.jTable_HorarioSolicitar.setModel(modeloTabla);
-    }
-    
-    public void iniciarTabla_Mis_Solicitudes(){
-        vista.SolicitudesUsuario_jTable.removeAll();
-        String data[][]={};
-        String col[]={"Parte 1","Parte 2"}; // se pide el nombre del jugador una sola vez al inicio
-        modeloTab = new DefaultTableModel(data, col);
-        vista.SolicitudesUsuario_jTable.setModel(modeloTab);
-    }
-    
-    public void obtenerSolicitud(){
-        
-    }
-    public void EliminarSolicitud(){
-        
-    }
-    
-    public void guardarSolicitud(){
-        
-    }
-    
-    public void elementosEnTabla(/*Usuario*/){ // aquí pasa toda la acción de la ventana
-        //vista.mostrarLanzadas.setText(valueOf(modelo.getLanzadas()));// se muestra las veces que se ha lanzado
-     /*   
-     /*   for (int i=0; i<Usuario.cantidadSolicitudes;i++)
-        modeloTabla.insertRow(modeloTabla.getRowCount(), new Object []{});
-        
-        for (int i=0; i<modeloTabla.getRowCount();i++){
-            
-            //System.out.println("---");
-        /*modeloTabla.setValueAt(Usuario.getHora, i, 0); 
-   
-        modeloTabla.setValueAt(Usuario.getFecha.getApellido(), i, 1);
-        
-        modeloTabla.setValueAt(modelo.Espacios.getEdad(), i,2);
-        
-        modeloTabla.setValueAt(modelo.Tiempo.cantEmpleados(),i, 3);
-        }   
-        */
-    }
-    
-     public void mostrarSolicitudesAgenda(){
-            for (int i=0; i<3; i++){
-                modeloTabla.insertRow(i, new Object []{});
-        
-                modeloTabla.setValueAt("1: "+ i, i, 0); 
-   
-                modeloTabla.setValueAt("2: "+ i, i, 1); 
-                
-                modeloTabla.setValueAt("3: "+i, i, 2);
-               
-                modeloTabla.setValueAt("4: "+i, i, 3);
-                
-                modeloTabla.setValueAt("5: "+i, i, 4);
-                
-                modeloTabla.setValueAt("6: "+i, i, 4);
-                
-                modeloTabla.setValueAt("7: "+i, i, 4);
-            }
-        
-    }
-    
-    
-    public void mostrarSolicitudes(){
-            for (int i=0; i<3; i++){
-                modeloTab.insertRow(i, new Object []{});
-               
-                modeloTab.setValueAt("XD: "+ i, i, 0); 
-   
-                modeloTab.setValueAt("Sol: "+ i, i, 1); 
-            }
-        
-    }
-    public void cargarSolicitudes(){//Carga el conjunto de usuarios 
-        File archUsuarios = new File("solicitudes");
+    public void cargarEdificios(){//Carga el archivo de edificios
+        edificios = new ArrayList<Edificio>();
+        File archivo = new File("edificios");
         try{
-            FileInputStream fis = new FileInputStream(archUsuarios);
+            FileInputStream fis = new FileInputStream(archivo);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            solicitudes = (ArrayList<Solicitud_Borrar>) ois.readObject();
+            edificios = (ArrayList<Edificio>) ois.readObject();
             ois.close();
         }
         catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo de solicitudes", "Error", 2);
+            JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo edificios, se creara uno nuevo", "Error", 2);
         }
         catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo de solicitudes", "Error", 2);
+            JOptionPane.showMessageDialog(null, "Error al cargar el archivo edificios", "Error", 2);
         }
         catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Los archivos no son compatibles", "Error", 2);
+            JOptionPane.showMessageDialog(null, "Archivo edificios no compatible", "Error", 2);
         }
+    }
+       
+    
+    public void cargarMisSolicitudes(){//Carga las solicitudes realizadas
+        ArrayList<Solicitud> misSolicitudes = usuario.getSolicitudes();
+        vista.SolicitudesUsuario_jTable.removeAll();
+        String[][] data = {};
+        String[] col = {"Codigo","Estado","Sala","Fecha","Hora Inicial","Hora Final","Actividad","Responsable"};
+        DefaultTableModel df = new DefaultTableModel(data,col);
+        vista.SolicitudesUsuario_jTable.setModel(df);
+        for(Solicitud s:misSolicitudes){
+            String[] linea = new String[8];
+            linea[0]=s.getCodigo();
+            linea[1]=s.getEstado();
+            linea[2]=s.getSala();
+            linea[3]=s.getFecha();
+            linea[4]=s.getLinea().getHoraInicial();
+            linea[5]=s.getLinea().getHoraFinal();
+            linea[6]=s.getLinea().getActividad();
+            linea[7]=s.getLinea().getResponsable();
+            df.addRow(linea);
+        }
+    }
+    
+    public void cargarEdificiosCB(){
+        for(Edificio e:edificios){
+            vista.boxEdificio.addItem(e.getNombre());
+        }
+        cargarDescripcion();
+    }
+    
+    public void cargarEspaciosCB(){
+        vista.boxSala.removeAllItems();
+        for(Espacio e:edificios.get(vista.boxEdificio.getSelectedIndex()).getListaEspacios()){
+            vista.boxSala.addItem(e.getNombre());
+        }
+    }
+    
+    public void cargarDescripcion(){
+        
+        Edificio e = edificios.get(vista.boxEdificio.getSelectedIndex());
+        if(vista.boxSala.getSelectedIndex()!=-1){
+            Espacio s = e.getListaEspacios().get(vista.boxSala.getSelectedIndex());
+            vista.descripcion.setText(s.getDescripcion());
+        }      
+    }
+    
+    public void guardar(){//Guarda los cambios en el usuario
+        File archUsrs = new File("usuarios");
+        try{
+            FileOutputStream fos = new FileOutputStream(archUsrs);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+            ous.writeObject(usuarios);
+            ous.close();
+            JOptionPane.showMessageDialog(null, "Solicitud enviada", "Exito", 1);
+        }
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "El archivo usuarios no existe", "Error", 2);
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Error al guardar el archivo", "Error", 2);
+        }
+    }
+    
+    public void guardarSolicitud(Solicitud s){
+        Edificio e = edificios.get(vista.boxEdificio.getSelectedIndex());
+        Espacio es = e.getListaEspacios().get(vista.boxSala.getSelectedIndex());
+        es.enqueSolicitud(s);
+        File archEdfs = new File("edificios");
+        try{
+            FileOutputStream fos = new FileOutputStream(archEdfs);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+            ous.writeObject(edificios);
+            ous.close();
+        }
+        catch(FileNotFoundException f){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo edificios", "Error", 2);
+        }
+        catch(IOException i){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar la solicitud", "Error", 2);
+        }
+    }
+    
+     public void solicitar(){
+         Solicitud nueva = new Solicitud();
+         nueva.setCodigo(""+usuario.getSolicitudes().size()+1);//el codigo es el numero de solicitud
+         nueva.setEstado("En espera");
+         nueva.setSala(vista.boxSala.getSelectedItem().toString());
+         nueva.setFecha(vista.fechaSolTxt.getText());
+         LineaAgenda nuevaLinea = new LineaAgenda();
+         nuevaLinea.setActividad(vista.txtActividad.getText());
+         nuevaLinea.setHoraFinal(vista.txtHoraFinal.getText());
+         nuevaLinea.setHoraInicial(vista.txtHoraInicial.getText());
+         nuevaLinea.setResponsable(usuario.getNombre());
+         nueva.setLinea(nuevaLinea);
+         usuario.anadirmapa(""+usuario.getSolicitudes().size()+1, nueva);
+         guardar();//Guarda la solicitud en el usuario
+         guardarSolicitud(nueva);//Guarda la solicitud en la sala
+     }
+    
+     public void guardarCambiosEdificio(){
+         File archEdfs = new File("edificios");
+         try{
+             FileOutputStream fos = new FileOutputStream(archEdfs);
+             ObjectOutputStream ous = new ObjectOutputStream(fos);
+             ous.writeObject(edificios);
+             ous.close();
+         }
+         catch(IOException e){
+             JOptionPane.showMessageDialog(null, "Error al guardar cambios en el archivo edificios", "Error", 2);
+         }
+     }
+     
+    public void cancelarSolicitud(){
+        Solicitud s = usuario.getSolicitud(vista.SolicitudesUsuario_jTable.getValueAt(vista.SolicitudesUsuario_jTable.getSelectedRow(), 0).toString());
+        usuario.removerSolicitud(s.getCodigo());
+        //Se podria agregar un metodo que lo elimine de la agenda si ha sido aceptado
+        for(Edificio e:edificios){//Busca a que espacio se envió la solicitud y la remueve de la cola de solicitudes
+            for(Espacio es:e.getListaEspacios()){
+                for(Solicitud so:es.getSolicitudes())
+                    if(so.getCodigo().equals(s.getCodigo())){
+                        es.getSolicitudes().remove(so);
+                    }
+            }
+        }
+        guardar();
+        guardarCambiosEdificio();
+        cargarMisSolicitudes();
+    }
+    
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==vista.solicitarBtn) solicitar();
+        if(e.getSource()==vista.cancelarSolicitudBtn) cancelarSolicitud();
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if(e.getSource()==vista.boxEdificio) cargarEspaciosCB();
+        if(e.getSource()==vista.boxSala) cargarDescripcion();
     }
 }

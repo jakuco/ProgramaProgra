@@ -10,7 +10,7 @@ import controlador.CtrlVistaLogin;
  *
  * @author davqi
  */
-public class ProyFinal {
+public class MainProyFinal {
 
     /**
      * @param args the command line arguments
