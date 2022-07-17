@@ -97,18 +97,22 @@ public class Ctrl_Aceptar_Rechazar_Solicitudes implements ActionListener,ItemLis
             DefaultTableModel df = new DefaultTableModel(data,colum);
             vista.tablaSolicitudes.setModel(df);
             solicitudes = es.getSolicitudes();
-            for(Solicitud s:solicitudes){
-                String[] lineaSolicitud = new String[8];
-                lineaSolicitud[0] = s.getCodigo();
-                lineaSolicitud[1] = s.getEstado();
-                lineaSolicitud[2] = s.getSala();
-                lineaSolicitud[3] = s.getFecha();
-                lineaSolicitud[4] = s.getLinea().getHoraInicial();
-                lineaSolicitud[5] = s.getLinea().getHoraFinal();
-                lineaSolicitud[6] = s.getLinea().getActividad();
-                lineaSolicitud[7] = s.getLinea().getResponsable();
-                df.addRow(lineaSolicitud);
-            }
+//            System.out.println(solicitudes.peek());
+//            if(!solicitudes.isEmpty()){
+            /*
+                for(Solicitud s:solicitudes){
+                    String[] lineaSolicitud = new String[8];
+                    lineaSolicitud[0] = s.getCodigo();
+                    lineaSolicitud[1] = s.getEstado();
+                    lineaSolicitud[2] = s.getSala();
+                    lineaSolicitud[3] = s.getFecha();
+                    lineaSolicitud[4] = s.getLinea().getHoraInicial();
+                    lineaSolicitud[5] = s.getLinea().getHoraFinal();
+                    lineaSolicitud[6] = s.getLinea().getActividad();
+                    lineaSolicitud[7] = s.getLinea().getResponsable();
+                    df.addRow(lineaSolicitud);
+                }
+            */
         }
     }
     

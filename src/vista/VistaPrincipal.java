@@ -116,6 +116,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         capacidadTxt = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jRadioButton_Servicio = new javax.swing.JRadioButton();
+        jRadioButton_Material = new javax.swing.JRadioButton();
         editarUusuario = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtApellidoEdit = new javax.swing.JTextField();
@@ -622,11 +624,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         BtnEditar.setText("Editar");
 
-        elementos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elemento" }));
+        elementos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo elemento" }));
 
         jLabel3.setText("Tipo:");
 
         jLabel9.setText("Capacidad:");
+
+        jRadioButton_Servicio.setText("Servicio");
+
+        jRadioButton_Material.setText("Material");
 
         javax.swing.GroupLayout jPanel1_adminitradorLayout = new javax.swing.GroupLayout(jPanel1_adminitrador);
         jPanel1_adminitrador.setLayout(jPanel1_adminitradorLayout);
@@ -635,13 +641,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3)
-                        .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
-                            .addComponent(jLabel20)
-                            .addGap(588, 588, 588)))
+                    .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(657, 657, 657))
                     .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
                         .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                             .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
                                 .addGap(260, 260, 260)
                                 .addComponent(BtnGuardar))
@@ -654,7 +659,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                         .addComponent(jLabel19)
                                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(32, 32, 32)
-                                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
+                                        .addComponent(salas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(BtnAgregar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(BtnEliminar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(BtnEditar))
                                     .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
                                         .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(idTxt)
@@ -670,19 +685,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                             .addComponent(tipoTxt, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(numPisos)
                                             .addComponent(capacidadTxt))
-                                        .addGap(84, 84, 84))
-                                    .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
-                                        .addComponent(salas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(BtnAgregar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(BtnEliminar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(BtnEditar)))))
-                        .addGap(61, 61, 61)))
-                .addGap(69, 69, 69))
+                                        .addGap(36, 36, 36)
+                                        .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton_Servicio)
+                                            .addComponent(jRadioButton_Material))
+                                        .addGap(41, 41, 41)))))
+                        .addGap(69, 69, 69))))
         );
         jPanel1_adminitradorLayout.setVerticalGroup(
             jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,13 +709,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(numPisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel1_adminitradorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton_Material)
+                        .addGap(16, 16, 16)
+                        .addComponent(jRadioButton_Servicio)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1_adminitradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(ubicacionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -788,7 +803,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnCancelarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(btnGuardarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(btnEditarEdit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         editarUusuarioLayout.setVerticalGroup(
             editarUusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,6 +1001,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel2_administrador;
     public javax.swing.JPanel jPanel8;
+    public javax.swing.JRadioButton jRadioButton_Material;
+    public javax.swing.JRadioButton jRadioButton_Servicio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

@@ -20,14 +20,14 @@ public class Espacio implements Serializable{
     private int tipo;
     private int capacidad;
     private ArrayList <Elemento> listaElementos; 
-    private Map<String,Agenda> agendas;//La clave es la fecha
+    private Map<String,Agenda> agendas;
     private Queue<Solicitud> colaSolicitudes;
 
     public Espacio() {
         agendas = new HashMap<String,Agenda>();
-        colaSolicitudes = new LinkedList<Solicitud>();
+        listaElementos = new ArrayList<>();
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -84,20 +84,16 @@ public class Espacio implements Serializable{
         return listaElementos.get(indice);
     }
     
+    public ArrayList<Elemento> obtenerListaElementos(){
+        return listaElementos;
+    }
+    
     public Agenda getAgenda(String fecha){
         return agendas.get(fecha);
     }
     
     public void setAgenda(String fecha, Agenda agenda){
-        agendas.put(fecha, agenda);
-    }
-    
-    public Map<String,Agenda> getAgendas(){
-        return agendas;
-    }
-    
-    public Queue<Solicitud> getSolicitudes(){
-        return colaSolicitudes;
+            agendas.put(fecha, agenda);
     }
     
     public Solicitud dequeSolicitud (){
@@ -107,4 +103,9 @@ public class Espacio implements Serializable{
     public void enqueSolicitud (Solicitud solicitud){
         colaSolicitudes.add(solicitud);
     }
+    
+    public Queue<Solicitud> getSolicitudes(){
+            return colaSolicitudes;
+    }
+    
 }

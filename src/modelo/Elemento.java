@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jorge
  */
-public class Elemento {
+public class Elemento implements Serializable{
     private String descripcion;
     private int cantidad;
     public Elemento (String descripcion,int cantidad){

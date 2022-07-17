@@ -74,7 +74,7 @@ public class CtrlVistaLogin implements ActionListener{
         }
         if(usuario instanceof Autorizador){
             ventanaUsuario.general.remove(ventanaUsuario.administrador);
-            Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario, (Solicitante) usuario,usuarios);
+            //Ctrl_MisSolicitudes ctrl_MisSolicitudes = new Ctrl_MisSolicitudes(ventanaUsuario, (Solicitante) usuario,usuarios);
             Ctrl_Aceptar_Rechazar_Solicitudes ctrl_Aceptar_Rechazar_Solicitudes =
                 new Ctrl_Aceptar_Rechazar_Solicitudes(ventanaUsuario,usuarios);
             Ctrl_registrar ctrl_registrar = new Ctrl_registrar(ventanaUsuario);

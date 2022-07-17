@@ -29,7 +29,6 @@ public class Solicitud implements Serializable{
         this.fecha = fecha;
     }
 
-    
     public String getCodigo() {
         return codigo;
     }
